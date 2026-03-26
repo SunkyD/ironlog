@@ -1,0 +1,106 @@
+<svg width="512" height="512" viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#1a1a1a"/>
+    <stop offset="100%" stop-color="#0d0d0d"/>
+  </linearGradient>
+  <linearGradient id="fire" x1="0" y1="1" x2="1" y2="0">
+    <stop offset="0%" stop-color="#ff3d00"/>
+    <stop offset="50%" stop-color="#ff5a1f"/>
+    <stop offset="100%" stop-color="#ffb347"/>
+  </linearGradient>
+  <linearGradient id="fire2" x1="0" y1="1" x2="0.5" y2="0">
+    <stop offset="0%" stop-color="#ff5a1f"/>
+    <stop offset="100%" stop-color="#ffd180"/>
+  </linearGradient>
+  <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#2a2a2a"/>
+    <stop offset="30%" stop-color="#888"/>
+    <stop offset="50%" stop-color="#ccc"/>
+    <stop offset="70%" stop-color="#888"/>
+    <stop offset="100%" stop-color="#2a2a2a"/>
+  </linearGradient>
+  <linearGradient id="plate" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#555"/>
+    <stop offset="40%" stop-color="#333"/>
+    <stop offset="100%" stop-color="#222"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#ff5a1f" stop-opacity="0.18"/>
+    <stop offset="100%" stop-color="#ff5a1f" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+
+<rect width="680" height="680" rx="144" fill="url(#bg)"/>
+<ellipse cx="340" cy="340" rx="280" ry="280" fill="url(#glow)"/>
+
+<g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
+  <line x1="0" y1="170" x2="680" y2="170"/>
+  <line x1="0" y1="340" x2="680" y2="340"/>
+  <line x1="0" y1="510" x2="680" y2="510"/>
+  <line x1="170" y1="0" x2="170" y2="680"/>
+  <line x1="340" y1="0" x2="340" y2="680"/>
+  <line x1="510" y1="0" x2="510" y2="680"/>
+</g>
+
+<rect x="70" y="322" width="540" height="36" rx="18" fill="url(#bar)"/>
+<rect x="270" y="326" width="140" height="28" rx="4" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+<g stroke="#444" stroke-width="1.5" stroke-linecap="round">
+  <line x1="285" y1="328" x2="280" y2="352"/>
+  <line x1="298" y1="328" x2="293" y2="352"/>
+  <line x1="311" y1="328" x2="306" y2="352"/>
+  <line x1="324" y1="328" x2="319" y2="352"/>
+  <line x1="337" y1="328" x2="332" y2="352"/>
+  <line x1="350" y1="328" x2="345" y2="352"/>
+  <line x1="363" y1="328" x2="358" y2="352"/>
+  <line x1="376" y1="328" x2="371" y2="352"/>
+  <line x1="389" y1="328" x2="384" y2="352"/>
+</g>
+
+<rect x="200" y="308" width="22" height="64" rx="4" fill="#444"/>
+<rect x="208" y="316" width="6" height="48" rx="2" fill="#666"/>
+<rect x="458" y="308" width="22" height="64" rx="4" fill="#444"/>
+<rect x="466" y="316" width="6" height="48" rx="2" fill="#666"/>
+
+<rect x="118" y="268" width="82" height="144" rx="12" fill="url(#plate)" stroke="#555" stroke-width="1.5"/>
+<rect x="128" y="280" width="62" height="120" rx="8" fill="#1e1e1e"/>
+<ellipse cx="159" cy="340" rx="18" ry="18" fill="none" stroke="#444" stroke-width="3"/>
+<circle cx="139" cy="295" r="4" fill="#333" stroke="#555" stroke-width="1"/>
+<circle cx="179" cy="295" r="4" fill="#333" stroke="#555" stroke-width="1"/>
+<circle cx="139" cy="385" r="4" fill="#333" stroke="#555" stroke-width="1"/>
+<circle cx="179" cy="385" r="4" fill="#333" stroke="#555" stroke-width="1"/>
+
+<rect x="86" y="298" width="36" height="84" rx="8" fill="url(#plate)" stroke="#555" stroke-width="1.5"/>
+<rect x="93" y="307" width="22" height="66" rx="5" fill="#1e1e1e"/>
+
+<rect x="480" y="268" width="82" height="144" rx="12" fill="url(#plate)" stroke="#555" stroke-width="1.5"/>
+<rect x="490" y="280" width="62" height="120" rx="8" fill="#1e1e1e"/>
+<ellipse cx="521" cy="340" rx="18" ry="18" fill="none" stroke="#444" stroke-width="3"/>
+<circle cx="501" cy="295" r="4" fill="#333" stroke="#555" stroke-width="1"/>
+<circle cx="541" cy="295" r="4" fill="#333" stroke="#555" stroke-width="1"/>
+<circle cx="501" cy="385" r="4" fill="#333" stroke="#555" stroke-width="1"/>
+<circle cx="541" cy="385" r="4" fill="#333" stroke="#555" stroke-width="1"/>
+
+<rect x="558" y="298" width="36" height="84" rx="8" fill="url(#plate)" stroke="#555" stroke-width="1.5"/>
+<rect x="565" y="307" width="22" height="66" rx="5" fill="#1e1e1e"/>
+
+<text x="340" y="230" text-anchor="middle"
+  font-family="'Arial Black', 'Helvetica Neue', sans-serif"
+  font-weight="900" font-size="118" letter-spacing="6"
+  fill="url(#fire)">IRON</text>
+
+<text x="340" y="542" text-anchor="middle"
+  font-family="'Arial Black', 'Helvetica Neue', sans-serif"
+  font-weight="900" font-size="118" letter-spacing="6"
+  fill="url(#fire2)">LOG</text>
+
+<rect x="180" y="243" width="320" height="3" rx="1.5" fill="url(#fire)" opacity="0.7"/>
+<rect x="180" y="434" width="320" height="3" rx="1.5" fill="url(#fire2)" opacity="0.7"/>
+
+<path d="M52 52 L52 88 M52 52 L88 52" stroke="#ff5a1f" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.7"/>
+<path d="M628 52 L628 88 M628 52 L592 52" stroke="#ff5a1f" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.7"/>
+<path d="M52 628 L52 592 M52 628 L88 628" stroke="#ff5a1f" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.7"/>
+<path d="M628 628 L628 592 M628 628 L592 628" stroke="#ff5a1f" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.7"/>
+
+<rect x="2" y="2" width="676" height="676" rx="143" fill="none" stroke="#ff5a1f" stroke-width="2" stroke-opacity="0.15"/>
+</svg>
