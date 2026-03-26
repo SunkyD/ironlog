@@ -40,6 +40,74 @@ body::before {
 #not-logged p { color: var(--muted); font-size: 14px; }
 
 /* ── SIDEBAR ──────────────────────────── */
+
+/* ── SIDEBAR TOGGLE ───────────────────────────────── */
+.sidebar {
+  transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), width 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+.sidebar.collapsed {
+  transform: translateX(-230px);
+}
+.main {
+  transition: margin-left 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+.main.expanded {
+  margin-left: 0 !important;
+}
+/* Toggle button floating */
+#sidebar-toggle {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 20;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  opacity: 0;
+  pointer-events: none;
+}
+#sidebar-toggle.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+#sidebar-toggle:hover {
+  color: var(--text);
+  background: var(--surface2);
+  border-color: rgba(255,90,31,0.4);
+}
+/* Collapse button inside sidebar */
+#sidebar-collapse-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 8px;
+  border-radius: 6px;
+  transition: all 0.15s;
+  border: 1px solid transparent;
+  width: fit-content;
+  margin-left: auto;
+}
+#sidebar-collapse-btn:hover {
+  color: var(--text);
+  background: var(--surface2);
+  border-color: var(--border);
+}
+#sidebar-collapse-btn svg { width: 13px; height: 13px; }
+
 .sidebar {
   width: 230px; background: var(--surface); border-right: 1px solid var(--border);
   display: flex; flex-direction: column;
@@ -383,13 +451,23 @@ canvas#bodyChart { width: 100% !important; border-radius: 8px; }
 
 <!-- APP -->
 <div id="app" style="display:none">
-  <aside class="sidebar">
+  <!-- Floating toggle (shown when sidebar collapsed) -->
+<button id="sidebar-toggle" onclick="toggleSidebar()" title="Ouvrir le menu">
+  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+<aside class="sidebar">
     <div class="s-logo-wrap">
       <div class="s-back-btn" onclick="goBack()" title="Retour à l'accueil">
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
         Accueil
       </div>
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2px">
       <div class="s-logo"><h1>IRON<br>LOG</h1><span>v1.0 — Beta</span></div>
+      <button id="sidebar-collapse-btn" onclick="toggleSidebar()" title="Réduire le menu">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7M18 19l-7-7 7-7"/></svg>
+        Réduire
+      </button>
+    </div>
     </div>
     <nav class="nav">
       <div class="nav-item active" onclick="showView('dashboard')">
@@ -991,6 +1069,7 @@ function bootApp(user) {
   const em = user.email;
   document.getElementById('sidebar-useremail').textContent = em.length > 18 ? em.slice(0,16)+'…' : em;
   showView('dashboard');
+  restoreSidebarState();
   // Start notification schedule if enabled
   const ns = getNotifSettings();
   if (ns.enabled && Notification.permission === 'granted') scheduleNotifCheck();
@@ -2285,6 +2364,40 @@ self.addEventListener('activate', e => e.waitUntil(caches.keys().then(ks => Prom
   });
 }
 
+
+
+// ── SIDEBAR TOGGLE ────────────────────────────────────
+let sidebarCollapsed = false;
+
+function toggleSidebar() {
+  sidebarCollapsed = !sidebarCollapsed;
+  const sidebar = document.querySelector('.sidebar');
+  const main    = document.querySelector('.main');
+  const btn     = document.getElementById('sidebar-toggle');
+
+  if (sidebarCollapsed) {
+    sidebar.classList.add('collapsed');
+    main.classList.add('expanded');
+    btn.classList.add('visible');
+    // Update floating toggle icon to "menu open"
+    btn.innerHTML = '<svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>';
+  } else {
+    sidebar.classList.remove('collapsed');
+    main.classList.remove('expanded');
+    btn.classList.remove('visible');
+  }
+
+  // Save preference
+  localStorage.setItem('ironlog_sidebar_collapsed', sidebarCollapsed ? '1' : '0');
+}
+
+function restoreSidebarState() {
+  const saved = localStorage.getItem('ironlog_sidebar_collapsed');
+  if (saved === '1') {
+    sidebarCollapsed = false; // force toggle to set to true
+    toggleSidebar();
+  }
+}
 
 // ── INIT ──────────────────────────────────────────────
 (function(){
